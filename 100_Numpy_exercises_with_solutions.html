@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>100 numpy exercises</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="100-numpy-exercises">100 numpy exercises</h1>
+<p>This is a collection of exercises that have been collected in the numpy mailing list, on stack overflow
+and in the numpy documentation. The goal of this collection is to offer a quick reference for both old
+and new users but also to provide a set of exercises for those who teach.</p>
+<p>If you find an error or think you've a better way to solve some of them, feel
+free to open an issue at <a href="https://github.com/rougier/numpy-100">https://github.com/rougier/numpy-100</a>.
+File automatically generated. See the documentation to update questions/answers/hints programmatically.</p>
+<h4 id="1-import-the-numpy-package-under-the-name-np-">1. Import the numpy package under the name <code>np</code> (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+</code></pre>
+<h4 id="2-print-the-numpy-version-and-the-configuration-">2. Print the numpy version and the configuration (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-built_in">print</span>(np.__version__)
+np.show_config()
+</code></pre>
+<h4 id="3-create-a-null-vector-of-size-10-">3. Create a null vector of size 10 (★☆☆)</h4>
+<pre><code class="language-python">Z = np.zeros(<span class="hljs-number">10</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="4-how-to-find-the-memory-size-of-any-array-">4. How to find the memory size of any array (★☆☆)</h4>
+<pre><code class="language-python">Z = np.zeros((<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%d bytes&quot;</span> % (Z.size * Z.itemsize))
+
+<span class="hljs-comment"># Simpler alternative</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%d bytes&quot;</span> % Z.nbytes)
+</code></pre>
+<h4 id="5-how-to-get-the-documentation-of-the-numpy-add-function-from-the-command-line-">5. How to get the documentation of the numpy add function from the command line? (★☆☆)</h4>
+<pre><code class="language-python">%run `python -c <span class="hljs-string">&quot;import numpy; numpy.info(numpy.add)&quot;</span>`
+</code></pre>
+<h4 id="6-create-a-null-vector-of-size-10-but-the-fifth-value-which-is-1-">6. Create a null vector of size 10 but the fifth value which is 1 (★☆☆)</h4>
+<pre><code class="language-python">Z = np.zeros(<span class="hljs-number">10</span>)
+Z[<span class="hljs-number">4</span>] = <span class="hljs-number">1</span>
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="7-create-a-vector-with-values-ranging-from-10-to-49-">7. Create a vector with values ranging from 10 to 49 (★☆☆)</h4>
+<pre><code class="language-python">Z = np.arange(<span class="hljs-number">10</span>,<span class="hljs-number">50</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="8-reverse-a-vector-first-element-becomes-last-">8. Reverse a vector (first element becomes last) (★☆☆)</h4>
+<pre><code class="language-python">Z = np.arange(<span class="hljs-number">50</span>)
+Z = Z[::-<span class="hljs-number">1</span>]
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="9-create-a-3x3-matrix-with-values-ranging-from-0-to-8-">9. Create a 3x3 matrix with values ranging from 0 to 8 (★☆☆)</h4>
+<pre><code class="language-python">Z = np.arange(<span class="hljs-number">9</span>).reshape(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="10-find-indices-of-non-zero-elements-from-120040-">10. Find indices of non-zero elements from [1,2,0,0,4,0] (★☆☆)</h4>
+<pre><code class="language-python">nz = np.nonzero([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">4</span>,<span class="hljs-number">0</span>])
+<span class="hljs-built_in">print</span>(nz)
+</code></pre>
+<h4 id="11-create-a-3x3-identity-matrix-">11. Create a 3x3 identity matrix (★☆☆)</h4>
+<pre><code class="language-python">Z = np.eye(<span class="hljs-number">3</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="12-create-a-3x3x3-array-with-random-values-">12. Create a 3x3x3 array with random values (★☆☆)</h4>
+<pre><code class="language-python">Z = np.random.random((<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>))
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="13-create-a-10x10-array-with-random-values-and-find-the-minimum-and-maximum-values-">13. Create a 10x10 array with random values and find the minimum and maximum values (★☆☆)</h4>
+<pre><code class="language-python">Z = np.random.random((<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))
+Zmin, Zmax = Z.<span class="hljs-built_in">min</span>(), Z.<span class="hljs-built_in">max</span>()
+<span class="hljs-built_in">print</span>(Zmin, Zmax)
+</code></pre>
+<h4 id="14-create-a-random-vector-of-size-30-and-find-the-mean-value-">14. Create a random vector of size 30 and find the mean value (★☆☆)</h4>
+<pre><code class="language-python">Z = np.random.random(<span class="hljs-number">30</span>)
+m = Z.mean()
+<span class="hljs-built_in">print</span>(m)
+</code></pre>
+<h4 id="15-create-a-2d-array-with-1-on-the-border-and-0-inside-">15. Create a 2d array with 1 on the border and 0 inside (★☆☆)</h4>
+<pre><code class="language-python">Z = np.ones((<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))
+Z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="16-how-to-add-a-border-filled-with-0s-around-an-existing-array-">16. How to add a border (filled with 0's) around an existing array? (★☆☆)</h4>
+<pre><code class="language-python">Z = np.ones((<span class="hljs-number">5</span>,<span class="hljs-number">5</span>))
+Z = np.pad(Z, pad_width=<span class="hljs-number">1</span>, mode=<span class="hljs-string">&#x27;constant&#x27;</span>, constant_values=<span class="hljs-number">0</span>)
+<span class="hljs-built_in">print</span>(Z)
+
+<span class="hljs-comment"># Using fancy indexing</span>
+Z[:, [<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>]] = <span class="hljs-number">0</span>
+Z[[<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>], :] = <span class="hljs-number">0</span>
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="17-what-is-the-result-of-the-following-expression-">17. What is the result of the following expression? (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-number">0</span> * np.nan
+np.nan == np.nan
+np.inf &gt; np.nan
+np.nan - np.nan
+np.nan <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span>([np.nan])
+<span class="hljs-number">0.3</span> == <span class="hljs-number">3</span> * <span class="hljs-number">0.1</span>
+</code></pre>
+<pre><code class="language-python"><span class="hljs-built_in">print</span>(<span class="hljs-number">0</span> * np.nan)
+<span class="hljs-built_in">print</span>(np.nan == np.nan)
+<span class="hljs-built_in">print</span>(np.inf &gt; np.nan)
+<span class="hljs-built_in">print</span>(np.nan - np.nan)
+<span class="hljs-built_in">print</span>(np.nan <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span>([np.nan]))
+<span class="hljs-built_in">print</span>(<span class="hljs-number">0.3</span> == <span class="hljs-number">3</span> * <span class="hljs-number">0.1</span>)
+</code></pre>
+<h4 id="18-create-a-5x5-matrix-with-values-1234-just-below-the-diagonal-">18. Create a 5x5 matrix with values 1,2,3,4 just below the diagonal (★☆☆)</h4>
+<pre><code class="language-python">Z = np.diag(<span class="hljs-number">1</span>+np.arange(<span class="hljs-number">4</span>),k=-<span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="19-create-a-8x8-matrix-and-fill-it-with-a-checkerboard-pattern-">19. Create a 8x8 matrix and fill it with a checkerboard pattern (★☆☆)</h4>
+<pre><code class="language-python">Z = np.zeros((<span class="hljs-number">8</span>,<span class="hljs-number">8</span>),dtype=<span class="hljs-built_in">int</span>)
+Z[<span class="hljs-number">1</span>::<span class="hljs-number">2</span>,::<span class="hljs-number">2</span>] = <span class="hljs-number">1</span>
+Z[::<span class="hljs-number">2</span>,<span class="hljs-number">1</span>::<span class="hljs-number">2</span>] = <span class="hljs-number">1</span>
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="20-consider-a-678-shape-array-what-is-the-index-xyz-of-the-100th-element-">20. Consider a (6,7,8) shape array, what is the index (x,y,z) of the 100th element? (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-built_in">print</span>(np.unravel_index(<span class="hljs-number">99</span>,(<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>)))
+</code></pre>
+<h4 id="21-create-a-checkerboard-8x8-matrix-using-the-tile-function-">21. Create a checkerboard 8x8 matrix using the tile function (★☆☆)</h4>
+<pre><code class="language-python">Z = np.tile( np.array([[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">0</span>]]), (<span class="hljs-number">4</span>,<span class="hljs-number">4</span>))
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="22-normalize-a-5x5-random-matrix-">22. Normalize a 5x5 random matrix (★☆☆)</h4>
+<pre><code class="language-python">Z = np.random.random((<span class="hljs-number">5</span>,<span class="hljs-number">5</span>))
+Z = (Z - np.mean (Z)) / (np.std (Z))
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="23-create-a-custom-dtype-that-describes-a-color-as-four-unsigned-bytes-rgba-">23. Create a custom dtype that describes a color as four unsigned bytes (RGBA) (★☆☆)</h4>
+<pre><code class="language-python">color = np.dtype([(<span class="hljs-string">&quot;r&quot;</span>, np.ubyte),
+                  (<span class="hljs-string">&quot;g&quot;</span>, np.ubyte),
+                  (<span class="hljs-string">&quot;b&quot;</span>, np.ubyte),
+                  (<span class="hljs-string">&quot;a&quot;</span>, np.ubyte)])
+</code></pre>
+<h4 id="24-multiply-a-5x3-matrix-by-a-3x2-matrix-real-matrix-product-">24. Multiply a 5x3 matrix by a 3x2 matrix (real matrix product) (★☆☆)</h4>
+<pre><code class="language-python">Z = np.matmul(np.ones((<span class="hljs-number">5</span>, <span class="hljs-number">3</span>)), np.ones((<span class="hljs-number">3</span>, <span class="hljs-number">2</span>)))
+<span class="hljs-built_in">print</span>(Z)
+
+<span class="hljs-comment"># Alternative solution, in Python 3.5 and above</span>
+Z = np.ones((<span class="hljs-number">5</span>,<span class="hljs-number">3</span>)) @ np.ones((<span class="hljs-number">3</span>,<span class="hljs-number">2</span>))
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="25-given-a-1d-array-negate-all-elements-which-are-between-3-and-8-in-place-">25. Given a 1D array, negate all elements which are between 3 and 8, in place. (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Evgeni Burovski</span>
+
+Z = np.arange(<span class="hljs-number">11</span>)
+Z[(<span class="hljs-number">3</span> &lt; Z) &amp; (Z &lt; <span class="hljs-number">8</span>)] *= -<span class="hljs-number">1</span>
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="26-what-is-the-output-of-the-following-script-">26. What is the output of the following script? (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Jake VanderPlas</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>),-<span class="hljs-number">1</span>))
+<span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> *
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>),-<span class="hljs-number">1</span>))
+</code></pre>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Jake VanderPlas</span>
+
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>),-<span class="hljs-number">1</span>))
+<span class="hljs-keyword">from</span> numpy <span class="hljs-keyword">import</span> *
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>),-<span class="hljs-number">1</span>))
+</code></pre>
+<h4 id="27-consider-an-integer-vector-z-which-of-these-expressions-are-legal-">27. Consider an integer vector Z, which of these expressions are legal? (★☆☆)</h4>
+<pre><code class="language-python">Z**Z
+<span class="hljs-number">2</span> &lt;&lt; Z &gt;&gt; <span class="hljs-number">2</span>
+Z &lt;- Z
+<span class="hljs-number">1j</span>*Z
+Z/<span class="hljs-number">1</span>/<span class="hljs-number">1</span>
+Z&lt;Z&gt;Z
+</code></pre>
+<pre><code class="language-python">Z**Z
+<span class="hljs-number">2</span> &lt;&lt; Z &gt;&gt; <span class="hljs-number">2</span>
+Z &lt;- Z
+<span class="hljs-number">1j</span>*Z
+Z/<span class="hljs-number">1</span>/<span class="hljs-number">1</span>
+Z&lt;Z&gt;Z
+</code></pre>
+<h4 id="28-what-are-the-result-of-the-following-expressions-">28. What are the result of the following expressions? (★☆☆)</h4>
+<pre><code class="language-python">np.array(<span class="hljs-number">0</span>) / np.array(<span class="hljs-number">0</span>)
+np.array(<span class="hljs-number">0</span>) // np.array(<span class="hljs-number">0</span>)
+np.array([np.nan]).astype(<span class="hljs-built_in">int</span>).astype(<span class="hljs-built_in">float</span>)
+</code></pre>
+<pre><code class="language-python"><span class="hljs-built_in">print</span>(np.array(<span class="hljs-number">0</span>) / np.array(<span class="hljs-number">0</span>))
+<span class="hljs-built_in">print</span>(np.array(<span class="hljs-number">0</span>) // np.array(<span class="hljs-number">0</span>))
+<span class="hljs-built_in">print</span>(np.array([np.nan]).astype(<span class="hljs-built_in">int</span>).astype(<span class="hljs-built_in">float</span>))
+</code></pre>
+<h4 id="29-how-to-round-away-from-zero-a-float-array--">29. How to round away from zero a float array ? (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Charles R Harris</span>
+
+Z = np.random.uniform(-<span class="hljs-number">10</span>,+<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)
+<span class="hljs-built_in">print</span>(np.copysign(np.ceil(np.<span class="hljs-built_in">abs</span>(Z)), Z))
+
+<span class="hljs-comment"># More readable but less efficient</span>
+<span class="hljs-built_in">print</span>(np.where(Z&gt;<span class="hljs-number">0</span>, np.ceil(Z), np.floor(Z)))
+</code></pre>
+<h4 id="30-how-to-find-common-values-between-two-arrays-">30. How to find common values between two arrays? (★☆☆)</h4>
+<pre><code class="language-python">Z1 = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)
+Z2 = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)
+<span class="hljs-built_in">print</span>(np.intersect1d(Z1,Z2))
+</code></pre>
+<h4 id="31-how-to-ignore-all-numpy-warnings-not-recommended-">31. How to ignore all numpy warnings (not recommended)? (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Suicide mode on</span>
+defaults = np.seterr(<span class="hljs-built_in">all</span>=<span class="hljs-string">&quot;ignore&quot;</span>)
+Z = np.ones(<span class="hljs-number">1</span>) / <span class="hljs-number">0</span>
+
+<span class="hljs-comment"># Back to sanity</span>
+_ = np.seterr(**defaults)
+
+<span class="hljs-comment"># Equivalently with a context manager</span>
+<span class="hljs-keyword">with</span> np.errstate(<span class="hljs-built_in">all</span>=<span class="hljs-string">&quot;ignore&quot;</span>):
+    np.arange(<span class="hljs-number">3</span>) / <span class="hljs-number">0</span>
+</code></pre>
+<h4 id="32-is-the-following-expressions-true-">32. Is the following expressions true? (★☆☆)</h4>
+<pre><code class="language-python">np.sqrt(-<span class="hljs-number">1</span>) == np.emath.sqrt(-<span class="hljs-number">1</span>)
+</code></pre>
+<pre><code class="language-python">np.sqrt(-<span class="hljs-number">1</span>) == np.emath.sqrt(-<span class="hljs-number">1</span>)
+</code></pre>
+<h4 id="33-how-to-get-the-dates-of-yesterday-today-and-tomorrow-">33. How to get the dates of yesterday, today and tomorrow? (★☆☆)</h4>
+<pre><code class="language-python">yesterday = np.datetime64(<span class="hljs-string">&#x27;today&#x27;</span>) - np.timedelta64(<span class="hljs-number">1</span>)
+today     = np.datetime64(<span class="hljs-string">&#x27;today&#x27;</span>)
+tomorrow  = np.datetime64(<span class="hljs-string">&#x27;today&#x27;</span>) + np.timedelta64(<span class="hljs-number">1</span>)
+</code></pre>
+<h4 id="34-how-to-get-all-the-dates-corresponding-to-the-month-of-july-2016-">34. How to get all the dates corresponding to the month of July 2016? (★★☆)</h4>
+<pre><code class="language-python">Z = np.arange(<span class="hljs-string">&#x27;2016-07&#x27;</span>, <span class="hljs-string">&#x27;2016-08&#x27;</span>, dtype=<span class="hljs-string">&#x27;datetime64[D]&#x27;</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="35-how-to-compute-ab-a2-in-place-without-copy-">35. How to compute ((A+B)*(-A/2)) in place (without copy)? (★★☆)</h4>
+<pre><code class="language-python">A = np.ones(<span class="hljs-number">3</span>)*<span class="hljs-number">1</span>
+B = np.ones(<span class="hljs-number">3</span>)*<span class="hljs-number">2</span>
+np.add(A,B,out=B)
+np.divide(A,<span class="hljs-number">2</span>,out=A)
+np.negative(A,out=A)
+np.multiply(A,B,out=A)
+</code></pre>
+<h4 id="36-extract-the-integer-part-of-a-random-array-of-positive-numbers-using-4-different-methods-">36. Extract the integer part of a random array of positive numbers using 4 different methods (★★☆)</h4>
+<pre><code class="language-python">Z = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">10</span>)
+
+<span class="hljs-built_in">print</span>(Z - Z%<span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(Z // <span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(np.floor(Z))
+<span class="hljs-built_in">print</span>(Z.astype(<span class="hljs-built_in">int</span>))
+<span class="hljs-built_in">print</span>(np.trunc(Z))
+</code></pre>
+<h4 id="37-create-a-5x5-matrix-with-row-values-ranging-from-0-to-4-">37. Create a 5x5 matrix with row values ranging from 0 to 4 (★★☆)</h4>
+<pre><code class="language-python">Z = np.zeros((<span class="hljs-number">5</span>,<span class="hljs-number">5</span>))
+Z += np.arange(<span class="hljs-number">5</span>)
+<span class="hljs-built_in">print</span>(Z)
+
+<span class="hljs-comment"># without broadcasting</span>
+Z = np.tile(np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>), (<span class="hljs-number">5</span>,<span class="hljs-number">1</span>))
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="38-consider-a-generator-function-that-generates-10-integers-and-use-it-to-build-an-array-">38. Consider a generator function that generates 10 integers and use it to build an array (★☆☆)</h4>
+<pre><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generate</span>():
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):
+        <span class="hljs-keyword">yield</span> x
+Z = np.fromiter(generate(),dtype=<span class="hljs-built_in">float</span>,count=-<span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="39-create-a-vector-of-size-10-with-values-ranging-from-0-to-1-both-excluded-">39. Create a vector of size 10 with values ranging from 0 to 1, both excluded (★★☆)</h4>
+<pre><code class="language-python">Z = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">11</span>,endpoint=<span class="hljs-literal">False</span>)[<span class="hljs-number">1</span>:]
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="40-create-a-random-vector-of-size-10-and-sort-it-">40. Create a random vector of size 10 and sort it (★★☆)</h4>
+<pre><code class="language-python">Z = np.random.random(<span class="hljs-number">10</span>)
+Z.sort()
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="41-how-to-sum-a-small-array-faster-than-npsum-">41. How to sum a small array faster than np.sum? (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Evgeni Burovski</span>
+
+Z = np.arange(<span class="hljs-number">10</span>)
+np.add.reduce(Z)
+</code></pre>
+<h4 id="42-consider-two-random-arrays-a-and-b-check-if-they-are-equal-">42. Consider two random arrays A and B, check if they are equal (★★☆)</h4>
+<pre><code class="language-python">A = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>)
+B = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>)
+
+<span class="hljs-comment"># Assuming identical shape of the arrays and a tolerance for the comparison of values</span>
+equal = np.allclose(A,B)
+<span class="hljs-built_in">print</span>(equal)
+
+<span class="hljs-comment"># Checking both the shape and the element values, no tolerance (values have to be exactly equal)</span>
+equal = np.array_equal(A,B)
+<span class="hljs-built_in">print</span>(equal)
+</code></pre>
+<h4 id="43-make-an-array-immutable-read-only-">43. Make an array immutable (read-only) (★★☆)</h4>
+<pre><code class="language-python">Z = np.zeros(<span class="hljs-number">10</span>)
+Z.flags.writeable = <span class="hljs-literal">False</span>
+Z[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>
+</code></pre>
+<h4 id="44-consider-a-random-10x2-matrix-representing-cartesian-coordinates-convert-them-to-polar-coordinates-">44. Consider a random 10x2 matrix representing cartesian coordinates, convert them to polar coordinates (★★☆)</h4>
+<pre><code class="language-python">Z = np.random.random((<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))
+X,Y = Z[:,<span class="hljs-number">0</span>], Z[:,<span class="hljs-number">1</span>]
+R = np.sqrt(X**<span class="hljs-number">2</span>+Y**<span class="hljs-number">2</span>)
+T = np.arctan2(Y,X)
+<span class="hljs-built_in">print</span>(R)
+<span class="hljs-built_in">print</span>(T)
+</code></pre>
+<h4 id="45-create-random-vector-of-size-10-and-replace-the-maximum-value-by-0-">45. Create random vector of size 10 and replace the maximum value by 0 (★★☆)</h4>
+<pre><code class="language-python">Z = np.random.random(<span class="hljs-number">10</span>)
+Z[Z.argmax()] = <span class="hljs-number">0</span>
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="46-create-a-structured-array-with-x-and-y-coordinates-covering-the-01x01-area-">46. Create a structured array with <code>x</code> and <code>y</code> coordinates covering the [0,1]x[0,1] area (★★☆)</h4>
+<pre><code class="language-python">Z = np.zeros((<span class="hljs-number">5</span>,<span class="hljs-number">5</span>), [(<span class="hljs-string">&#x27;x&#x27;</span>,<span class="hljs-built_in">float</span>),(<span class="hljs-string">&#x27;y&#x27;</span>,<span class="hljs-built_in">float</span>)])
+Z[<span class="hljs-string">&#x27;x&#x27;</span>], Z[<span class="hljs-string">&#x27;y&#x27;</span>] = np.meshgrid(np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>),
+                             np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>))
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="47-given-two-arrays-x-and-y-construct-the-cauchy-matrix-c-cij-1xi---yj-">47. Given two arrays, X and Y, construct the Cauchy matrix C (Cij =1/(xi - yj)) (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Evgeni Burovski</span>
+
+X = np.arange(<span class="hljs-number">8</span>)
+Y = X + <span class="hljs-number">0.5</span>
+C = <span class="hljs-number">1.0</span> / np.subtract.outer(X, Y)
+<span class="hljs-built_in">print</span>(np.linalg.det(C))
+</code></pre>
+<h4 id="48-print-the-minimum-and-maximum-representable-values-for-each-numpy-scalar-type-">48. Print the minimum and maximum representable values for each numpy scalar type (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-keyword">for</span> dtype <span class="hljs-keyword">in</span> [np.int8, np.int32, np.int64]:
+   <span class="hljs-built_in">print</span>(np.iinfo(dtype).<span class="hljs-built_in">min</span>)
+   <span class="hljs-built_in">print</span>(np.iinfo(dtype).<span class="hljs-built_in">max</span>)
+<span class="hljs-keyword">for</span> dtype <span class="hljs-keyword">in</span> [np.float32, np.float64]:
+   <span class="hljs-built_in">print</span>(np.finfo(dtype).<span class="hljs-built_in">min</span>)
+   <span class="hljs-built_in">print</span>(np.finfo(dtype).<span class="hljs-built_in">max</span>)
+   <span class="hljs-built_in">print</span>(np.finfo(dtype).eps)
+</code></pre>
+<h4 id="49-how-to-print-all-the-values-of-an-array-">49. How to print all the values of an array? (★★☆)</h4>
+<pre><code class="language-python">np.set_printoptions(threshold=<span class="hljs-built_in">float</span>(<span class="hljs-string">&quot;inf&quot;</span>))
+Z = np.zeros((<span class="hljs-number">40</span>,<span class="hljs-number">40</span>))
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="50-how-to-find-the-closest-value-to-a-given-scalar-in-a-vector-">50. How to find the closest value (to a given scalar) in a vector? (★★☆)</h4>
+<pre><code class="language-python">Z = np.arange(<span class="hljs-number">100</span>)
+v = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>)
+index = (np.<span class="hljs-built_in">abs</span>(Z-v)).argmin()
+<span class="hljs-built_in">print</span>(Z[index])
+</code></pre>
+<h4 id="51-create-a-structured-array-representing-a-position-xy-and-a-color-rgb-">51. Create a structured array representing a position (x,y) and a color (r,g,b) (★★☆)</h4>
+<pre><code class="language-python">Z = np.zeros(<span class="hljs-number">10</span>, [ (<span class="hljs-string">&#x27;position&#x27;</span>, [ (<span class="hljs-string">&#x27;x&#x27;</span>, <span class="hljs-built_in">float</span>, <span class="hljs-number">1</span>),
+                                  (<span class="hljs-string">&#x27;y&#x27;</span>, <span class="hljs-built_in">float</span>, <span class="hljs-number">1</span>)]),
+                   (<span class="hljs-string">&#x27;color&#x27;</span>,    [ (<span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-built_in">float</span>, <span class="hljs-number">1</span>),
+                                  (<span class="hljs-string">&#x27;g&#x27;</span>, <span class="hljs-built_in">float</span>, <span class="hljs-number">1</span>),
+                                  (<span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-built_in">float</span>, <span class="hljs-number">1</span>)])])
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="52-consider-a-random-vector-with-shape-1002-representing-coordinates-find-point-by-point-distances-">52. Consider a random vector with shape (100,2) representing coordinates, find point by point distances (★★☆)</h4>
+<pre><code class="language-python">Z = np.random.random((<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))
+X,Y = np.atleast_2d(Z[:,<span class="hljs-number">0</span>], Z[:,<span class="hljs-number">1</span>])
+D = np.sqrt( (X-X.T)**<span class="hljs-number">2</span> + (Y-Y.T)**<span class="hljs-number">2</span>)
+<span class="hljs-built_in">print</span>(D)
+
+<span class="hljs-comment"># Much faster with scipy</span>
+<span class="hljs-keyword">import</span> scipy
+<span class="hljs-comment"># Thanks Gavin Heverly-Coulson (#issue 1)</span>
+<span class="hljs-keyword">import</span> scipy.spatial
+
+Z = np.random.random((<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))
+D = scipy.spatial.distance.cdist(Z,Z)
+<span class="hljs-built_in">print</span>(D)
+</code></pre>
+<h4 id="53-how-to-convert-a-float-32-bits-array-into-an-integer-32-bits-array-in-place">53. How to convert a float (32 bits) array into an integer (32 bits) array in place?</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Thanks Vikas (https://stackoverflow.com/a/10622758/5989906)</span>
+<span class="hljs-comment"># &amp; unutbu (https://stackoverflow.com/a/4396247/5989906)</span>
+Z = (np.random.rand(<span class="hljs-number">10</span>)*<span class="hljs-number">100</span>).astype(np.float32)
+Y = Z.view(np.int32)
+Y[:] = Z
+<span class="hljs-built_in">print</span>(Y)
+</code></pre>
+<h4 id="54-how-to-read-the-following-file-">54. How to read the following file? (★★☆)</h4>
+<pre><code>1, 2, 3, 4, 5
+6,  ,  , 7, 8
+ ,  , 9,10,11
+</code></pre>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> io <span class="hljs-keyword">import</span> StringIO
+
+<span class="hljs-comment"># Fake file</span>
+s = StringIO(<span class="hljs-string">&#x27;&#x27;&#x27;1, 2, 3, 4, 5
+
+                6,  ,  , 7, 8
+
+                 ,  , 9,10,11
+&#x27;&#x27;&#x27;</span>)
+Z = np.genfromtxt(s, delimiter=<span class="hljs-string">&quot;,&quot;</span>, dtype = <span class="hljs-built_in">int</span>, filling_values = <span class="hljs-number">0</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="55-what-is-the-equivalent-of-enumerate-for-numpy-arrays-">55. What is the equivalent of enumerate for numpy arrays? (★★☆)</h4>
+<pre><code class="language-python">Z = np.arange(<span class="hljs-number">9</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>)
+<span class="hljs-keyword">for</span> index, value <span class="hljs-keyword">in</span> np.ndenumerate(Z):
+    <span class="hljs-built_in">print</span>(index, value)
+<span class="hljs-keyword">for</span> index <span class="hljs-keyword">in</span> np.ndindex(Z.shape):
+    <span class="hljs-built_in">print</span>(index, Z[index])
+</code></pre>
+<h4 id="56-generate-a-generic-2d-gaussian-like-array-">56. Generate a generic 2D Gaussian-like array (★★☆)</h4>
+<pre><code class="language-python">X, Y = np.meshgrid(np.linspace(-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">10</span>), np.linspace(-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">10</span>))
+D = np.sqrt(X*X+Y*Y)
+sigma, mu = <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>
+G = np.exp(-( (D-mu)**<span class="hljs-number">2</span> / ( <span class="hljs-number">2.0</span> * sigma**<span class="hljs-number">2</span> ) ) )
+<span class="hljs-built_in">print</span>(G)
+</code></pre>
+<h4 id="57-how-to-randomly-place-p-elements-in-a-2d-array-">57. How to randomly place p elements in a 2D array? (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Divakar</span>
+
+n = <span class="hljs-number">10</span>
+p = <span class="hljs-number">3</span>
+Z = np.zeros((n,n))
+np.put(Z, np.random.choice(<span class="hljs-built_in">range</span>(n*n), p, replace=<span class="hljs-literal">False</span>),<span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="58-subtract-the-mean-of-each-row-of-a-matrix-">58. Subtract the mean of each row of a matrix (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Warren Weckesser</span>
+
+X = np.random.rand(<span class="hljs-number">5</span>, <span class="hljs-number">10</span>)
+
+<span class="hljs-comment"># Recent versions of numpy</span>
+Y = X - X.mean(axis=<span class="hljs-number">1</span>, keepdims=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># Older versions of numpy</span>
+Y = X - X.mean(axis=<span class="hljs-number">1</span>).reshape(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>)
+
+<span class="hljs-built_in">print</span>(Y)
+</code></pre>
+<h4 id="59-how-to-sort-an-array-by-the-nth-column-">59. How to sort an array by the nth column? (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Steve Tjoa</span>
+
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>))
+<span class="hljs-built_in">print</span>(Z)
+<span class="hljs-built_in">print</span>(Z[Z[:,<span class="hljs-number">1</span>].argsort()])
+</code></pre>
+<h4 id="60-how-to-tell-if-a-given-2d-array-has-null-columns-">60. How to tell if a given 2D array has null columns? (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Warren Weckesser</span>
+
+<span class="hljs-comment"># null : 0 </span>
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">3</span>,(<span class="hljs-number">3</span>,<span class="hljs-number">10</span>))
+<span class="hljs-built_in">print</span>((~Z.<span class="hljs-built_in">any</span>(axis=<span class="hljs-number">0</span>)).<span class="hljs-built_in">any</span>())
+
+<span class="hljs-comment"># null : np.nan</span>
+Z=np.array([
+    [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,np.nan],
+    [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,np.nan],
+    [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,np.nan]
+])
+<span class="hljs-built_in">print</span>(np.isnan(Z).<span class="hljs-built_in">all</span>(axis=<span class="hljs-number">0</span>))
+</code></pre>
+<h4 id="61-find-the-nearest-value-from-a-given-value-in-an-array-">61. Find the nearest value from a given value in an array (★★☆)</h4>
+<pre><code class="language-python">Z = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+z = <span class="hljs-number">0.5</span>
+m = Z.flat[np.<span class="hljs-built_in">abs</span>(Z - z).argmin()]
+<span class="hljs-built_in">print</span>(m)
+</code></pre>
+<h4 id="62-considering-two-arrays-with-shape-13-and-31-how-to-compute-their-sum-using-an-iterator-">62. Considering two arrays with shape (1,3) and (3,1), how to compute their sum using an iterator? (★★☆)</h4>
+<pre><code class="language-python">A = np.arange(<span class="hljs-number">3</span>).reshape(<span class="hljs-number">3</span>,<span class="hljs-number">1</span>)
+B = np.arange(<span class="hljs-number">3</span>).reshape(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>)
+it = np.nditer([A,B,<span class="hljs-literal">None</span>])
+<span class="hljs-keyword">for</span> x,y,z <span class="hljs-keyword">in</span> it: z[...] = x + y
+<span class="hljs-built_in">print</span>(it.operands[<span class="hljs-number">2</span>])
+</code></pre>
+<h4 id="63-create-an-array-class-that-has-a-name-attribute-">63. Create an array class that has a name attribute (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">NamedArray</span>(np.ndarray):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__new__</span>(<span class="hljs-params">cls, array, name=<span class="hljs-string">&quot;no name&quot;</span></span>):
+        obj = np.asarray(array).view(cls)
+        obj.name = name
+        <span class="hljs-keyword">return</span> obj
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__array_finalize__</span>(<span class="hljs-params">self, obj</span>):
+        <span class="hljs-keyword">if</span> obj <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>: <span class="hljs-keyword">return</span>
+        self.name = <span class="hljs-built_in">getattr</span>(obj, <span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&quot;no name&quot;</span>)
+
+Z = NamedArray(np.arange(<span class="hljs-number">10</span>), <span class="hljs-string">&quot;range_10&quot;</span>)
+<span class="hljs-built_in">print</span> (Z.name)
+</code></pre>
+<h4 id="64-consider-a-given-vector-how-to-add-1-to-each-element-indexed-by-a-second-vector-be-careful-with-repeated-indices-">64. Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices)? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Brett Olsen</span>
+
+Z = np.ones(<span class="hljs-number">10</span>)
+I = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>(Z),<span class="hljs-number">20</span>)
+Z += np.bincount(I, minlength=<span class="hljs-built_in">len</span>(Z))
+<span class="hljs-built_in">print</span>(Z)
+
+<span class="hljs-comment"># Another solution</span>
+<span class="hljs-comment"># Author: Bartosz Telenczuk</span>
+np.add.at(Z, I, <span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="65-how-to-accumulate-elements-of-a-vector-x-to-an-array-f-based-on-an-index-list-i-">65. How to accumulate elements of a vector (X) to an array (F) based on an index list (I)? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Alan G Isaac</span>
+
+X = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]
+I = [<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">9</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">1</span>]
+F = np.bincount(I,X)
+<span class="hljs-built_in">print</span>(F)
+</code></pre>
+<h4 id="66-considering-a-wh3-image-of-dtypeubyte-compute-the-number-of-unique-colors-">66. Considering a (w,h,3) image of (dtype=ubyte), compute the number of unique colors (★★☆)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Fisher Wang</span>
+
+w, h = <span class="hljs-number">256</span>, <span class="hljs-number">256</span>
+I = np.random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">4</span>, (h, w, <span class="hljs-number">3</span>)).astype(np.ubyte)
+colors = np.unique(I.reshape(-<span class="hljs-number">1</span>, <span class="hljs-number">3</span>), axis=<span class="hljs-number">0</span>)
+n = <span class="hljs-built_in">len</span>(colors)
+<span class="hljs-built_in">print</span>(n)
+
+<span class="hljs-comment"># Faster version</span>
+<span class="hljs-comment"># Author: Mark Setchell</span>
+<span class="hljs-comment"># https://stackoverflow.com/a/59671950/2836621</span>
+
+w, h = <span class="hljs-number">256</span>, <span class="hljs-number">256</span>
+I = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">4</span>,(h,w,<span class="hljs-number">3</span>), dtype=np.uint8)
+
+<span class="hljs-comment"># View each pixel as a single 24-bit integer, rather than three 8-bit bytes</span>
+I24 = np.dot(I.astype(np.uint32),[<span class="hljs-number">1</span>,<span class="hljs-number">256</span>,<span class="hljs-number">65536</span>])
+
+<span class="hljs-comment"># Count unique colours</span>
+n = <span class="hljs-built_in">len</span>(np.unique(I24))
+<span class="hljs-built_in">print</span>(n)
+</code></pre>
+<h4 id="67-considering-a-four-dimensions-array-how-to-get-sum-over-the-last-two-axis-at-once-">67. Considering a four dimensions array, how to get sum over the last two axis at once? (★★★)</h4>
+<pre><code class="language-python">A = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>))
+<span class="hljs-comment"># solution by passing a tuple of axes (introduced in numpy 1.7.0)</span>
+<span class="hljs-built_in">sum</span> = A.<span class="hljs-built_in">sum</span>(axis=(-<span class="hljs-number">2</span>,-<span class="hljs-number">1</span>))
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>)
+<span class="hljs-comment"># solution by flattening the last two dimensions into one</span>
+<span class="hljs-comment"># (useful for functions that don&#x27;t accept tuples for axis argument)</span>
+<span class="hljs-built_in">sum</span> = A.reshape(A.shape[:-<span class="hljs-number">2</span>] + (-<span class="hljs-number">1</span>,)).<span class="hljs-built_in">sum</span>(axis=-<span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>)
+</code></pre>
+<h4 id="68-considering-a-one-dimensional-vector-d-how-to-compute-means-of-subsets-of-d-using-a-vector-s-of-same-size-describing-subset--indices-">68. Considering a one-dimensional vector D, how to compute means of subsets of D using a vector S of same size describing subset  indices? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Jaime Fernández del Río</span>
+
+D = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">100</span>)
+S = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">100</span>)
+D_sums = np.bincount(S, weights=D)
+D_counts = np.bincount(S)
+D_means = D_sums / D_counts
+<span class="hljs-built_in">print</span>(D_means)
+
+<span class="hljs-comment"># Pandas solution as a reference due to more intuitive code</span>
+<span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd
+<span class="hljs-built_in">print</span>(pd.Series(D).groupby(S).mean())
+</code></pre>
+<h4 id="69-how-to-get-the-diagonal-of-a-dot-product-">69. How to get the diagonal of a dot product? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Mathieu Blondel</span>
+
+A = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>))
+B = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>))
+
+<span class="hljs-comment"># Slow version</span>
+np.diag(np.dot(A, B))
+
+<span class="hljs-comment"># Fast version</span>
+np.<span class="hljs-built_in">sum</span>(A * B.T, axis=<span class="hljs-number">1</span>)
+
+<span class="hljs-comment"># Faster version</span>
+np.einsum(<span class="hljs-string">&quot;ij,ji-&gt;i&quot;</span>, A, B)
+</code></pre>
+<h4 id="70-consider-the-vector-1-2-3-4-5-how-to-build-a-new-vector-with-3-consecutive-zeros-interleaved-between-each-value-">70. Consider the vector [1, 2, 3, 4, 5], how to build a new vector with 3 consecutive zeros interleaved between each value? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Warren Weckesser</span>
+
+Z = np.array([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>])
+nz = <span class="hljs-number">3</span>
+Z0 = np.zeros(<span class="hljs-built_in">len</span>(Z) + (<span class="hljs-built_in">len</span>(Z)-<span class="hljs-number">1</span>)*(nz))
+Z0[::nz+<span class="hljs-number">1</span>] = Z
+<span class="hljs-built_in">print</span>(Z0)
+</code></pre>
+<h4 id="71-consider-an-array-of-dimension-553-how-to-multiply-it-by-an-array-with-dimensions-55-">71. Consider an array of dimension (5,5,3), how to multiply it by an array with dimensions (5,5)? (★★★)</h4>
+<pre><code class="language-python">A = np.ones((<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>))
+B = <span class="hljs-number">2</span>*np.ones((<span class="hljs-number">5</span>,<span class="hljs-number">5</span>))
+<span class="hljs-built_in">print</span>(A * B[:,:,<span class="hljs-literal">None</span>])
+</code></pre>
+<h4 id="72-how-to-swap-two-rows-of-an-array-">72. How to swap two rows of an array? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Eelco Hoogendoorn</span>
+
+A = np.arange(<span class="hljs-number">25</span>).reshape(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>)
+A[[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]] = A[[<span class="hljs-number">1</span>,<span class="hljs-number">0</span>]]
+<span class="hljs-built_in">print</span>(A)
+</code></pre>
+<h4 id="73-consider-a-set-of-10-triplets-describing-10-triangles-with-shared-vertices-find-the-set-of-unique-line-segments-composing-all-the--triangles-">73. Consider a set of 10 triplets describing 10 triangles (with shared vertices), find the set of unique line segments composing all the  triangles (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Nicolas P. Rougier</span>
+
+faces = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>))
+F = np.roll(faces.repeat(<span class="hljs-number">2</span>,axis=<span class="hljs-number">1</span>),-<span class="hljs-number">1</span>,axis=<span class="hljs-number">1</span>)
+F = F.reshape(<span class="hljs-built_in">len</span>(F)*<span class="hljs-number">3</span>,<span class="hljs-number">2</span>)
+F = np.sort(F,axis=<span class="hljs-number">1</span>)
+G = F.view( dtype=[(<span class="hljs-string">&#x27;p0&#x27;</span>,F.dtype),(<span class="hljs-string">&#x27;p1&#x27;</span>,F.dtype)] )
+G = np.unique(G)
+<span class="hljs-built_in">print</span>(G)
+</code></pre>
+<h4 id="74-given-a-sorted-array-c-that-corresponds-to-a-bincount-how-to-produce-an-array-a-such-that-npbincounta--c-">74. Given a sorted array C that corresponds to a bincount, how to produce an array A such that np.bincount(A) == C? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Jaime Fernández del Río</span>
+
+C = np.bincount([<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>])
+A = np.repeat(np.arange(<span class="hljs-built_in">len</span>(C)), C)
+<span class="hljs-built_in">print</span>(A)
+</code></pre>
+<h4 id="75-how-to-compute-averages-using-a-sliding-window-over-an-array-">75. How to compute averages using a sliding window over an array? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Jaime Fernández del Río</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">moving_average</span>(<span class="hljs-params">a, n=<span class="hljs-number">3</span></span>) :
+    ret = np.cumsum(a, dtype=<span class="hljs-built_in">float</span>)
+    ret[n:] = ret[n:] - ret[:-n]
+    <span class="hljs-keyword">return</span> ret[n - <span class="hljs-number">1</span>:] / n
+Z = np.arange(<span class="hljs-number">20</span>)
+<span class="hljs-built_in">print</span>(moving_average(Z, n=<span class="hljs-number">3</span>))
+
+<span class="hljs-comment"># Author: Jeff Luo (@Jeff1999)</span>
+<span class="hljs-comment"># make sure your NumPy &gt;= 1.20.0</span>
+
+<span class="hljs-keyword">from</span> numpy.lib.stride_tricks <span class="hljs-keyword">import</span> sliding_window_view
+
+Z = np.arange(<span class="hljs-number">20</span>)
+<span class="hljs-built_in">print</span>(sliding_window_view(Z, window_shape=<span class="hljs-number">3</span>).mean(axis=-<span class="hljs-number">1</span>))
+</code></pre>
+<h4 id="76-consider-a-one-dimensional-array-z-build-a-two-dimensional-array-whose-first-row-is-z0z1z2-and-each-subsequent-row-is--shifted-by-1-last-row-should-be-z-3z-2z-1-">76. Consider a one-dimensional array Z, build a two-dimensional array whose first row is (Z[0],Z[1],Z[2]) and each subsequent row is  shifted by 1 (last row should be (Z[-3],Z[-2],Z[-1]) (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Joe Kington / Erik Rigtorp</span>
+<span class="hljs-keyword">from</span> numpy.lib <span class="hljs-keyword">import</span> stride_tricks
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">rolling</span>(<span class="hljs-params">a, window</span>):
+    shape = (a.size - window + <span class="hljs-number">1</span>, window)
+    strides = (a.strides[<span class="hljs-number">0</span>], a.strides[<span class="hljs-number">0</span>])
+    <span class="hljs-keyword">return</span> stride_tricks.as_strided(a, shape=shape, strides=strides)
+Z = rolling(np.arange(<span class="hljs-number">10</span>), <span class="hljs-number">3</span>)
+<span class="hljs-built_in">print</span>(Z)
+
+<span class="hljs-comment"># Author: Jeff Luo (@Jeff1999)</span>
+
+Z = np.arange(<span class="hljs-number">10</span>)
+<span class="hljs-built_in">print</span>(sliding_window_view(Z, window_shape=<span class="hljs-number">3</span>))
+</code></pre>
+<h4 id="77-how-to-negate-a-boolean-or-to-change-the-sign-of-a-float-inplace-">77. How to negate a boolean, or to change the sign of a float inplace? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Nathaniel J. Smith</span>
+
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,<span class="hljs-number">100</span>)
+np.logical_not(Z, out=Z)
+
+Z = np.random.uniform(-<span class="hljs-number">1.0</span>,<span class="hljs-number">1.0</span>,<span class="hljs-number">100</span>)
+np.negative(Z, out=Z)
+</code></pre>
+<h4 id="78-consider-2-sets-of-points-p0p1-describing-lines-2d-and-a-point-p-how-to-compute-distance-from-p-to-each-line-i-p0ip1i-">78. Consider 2 sets of points P0,P1 describing lines (2d) and a point p, how to compute distance from p to each line i (P0[i],P1[i])? (★★★)</h4>
+<pre><code class="language-python">P0 = np.random.uniform(-<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))
+P1 = np.random.uniform(-<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))
+p  = np.random.uniform(-<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,( <span class="hljs-number">1</span>,<span class="hljs-number">2</span>))
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">distance_faster</span>(<span class="hljs-params">P0,P1,p</span>):
+    <span class="hljs-comment">#Author: Hemanth Pasupuleti</span>
+    <span class="hljs-comment">#Reference: https://mathworld.wolfram.com/Point-LineDistance2-Dimensional.html</span>
+
+    v = P1- P0 
+    v[:,[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]] = v[:,[<span class="hljs-number">1</span>,<span class="hljs-number">0</span>]]
+    v[:,<span class="hljs-number">1</span>]*=-<span class="hljs-number">1</span> 
+    norm = np.linalg.norm(v,axis=<span class="hljs-number">1</span>)   
+    r = P0 - p
+    d = np.<span class="hljs-built_in">abs</span>(np.einsum(<span class="hljs-string">&quot;ij,ij-&gt;i&quot;</span>,r,v)) / norm 
+
+    <span class="hljs-keyword">return</span> d
+
+<span class="hljs-built_in">print</span>(distance_faster(P0, P1, p))
+
+<span class="hljs-comment">##--------------- OR ---------------##</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">distance_slower</span>(<span class="hljs-params">P0, P1, p</span>):
+    T = P1 - P0
+    L = (T**<span class="hljs-number">2</span>).<span class="hljs-built_in">sum</span>(axis=<span class="hljs-number">1</span>)
+    U = -((P0[:,<span class="hljs-number">0</span>]-p[...,<span class="hljs-number">0</span>])*T[:,<span class="hljs-number">0</span>] + (P0[:,<span class="hljs-number">1</span>]-p[...,<span class="hljs-number">1</span>])*T[:,<span class="hljs-number">1</span>]) / L
+    U = U.reshape(<span class="hljs-built_in">len</span>(U),<span class="hljs-number">1</span>)
+    D = P0 + U*T - p
+    <span class="hljs-keyword">return</span> np.sqrt((D**<span class="hljs-number">2</span>).<span class="hljs-built_in">sum</span>(axis=<span class="hljs-number">1</span>))
+
+<span class="hljs-built_in">print</span>(distance_slower(P0, P1, p))
+</code></pre>
+<h4 id="79-consider-2-sets-of-points-p0p1-describing-lines-2d-and-a-set-of-points-p-how-to-compute-distance-from-each-point-j-pj-to-each-line-i-p0ip1i-">79. Consider 2 sets of points P0,P1 describing lines (2d) and a set of points P, how to compute distance from each point j (P[j]) to each line i (P0[i],P1[i])? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Italmassov Kuanysh</span>
+
+<span class="hljs-comment"># based on distance function from previous question</span>
+P0 = np.random.uniform(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, (<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))
+P1 = np.random.uniform(-<span class="hljs-number">10</span>,<span class="hljs-number">10</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))
+p = np.random.uniform(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, (<span class="hljs-number">10</span>,<span class="hljs-number">2</span>))
+<span class="hljs-built_in">print</span>(np.array([distance(P0,P1,p_i) <span class="hljs-keyword">for</span> p_i <span class="hljs-keyword">in</span> p]))
+
+<span class="hljs-comment"># Author: Yang Wu (Broadcasting)</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">distance_points_to_lines</span>(<span class="hljs-params">p: np.ndarray, p_1: np.ndarray, p_2: np.ndarray</span>) -&gt; np.ndarray:
+    x_0, y_0 = p.T  <span class="hljs-comment"># Shape -&gt; (n points, )</span>
+    x_1, y_1 = p_1.T  <span class="hljs-comment"># Shape -&gt; (n lines, )</span>
+    x_2, y_2 = p_2.T  <span class="hljs-comment"># Shape -&gt; (n lines, )</span>
+
+    <span class="hljs-comment"># Displacement vector coordinates from p_1 -&gt; p_2</span>
+    dx = x_2 - x_1  <span class="hljs-comment"># Shape -&gt; (n lines, )</span>
+    dy = y_2 - y_1  <span class="hljs-comment"># Shape -&gt; (n lines, )</span>
+
+    <span class="hljs-comment"># The &#x27;cross product&#x27; term</span>
+    cross_term = x_2 * y_1 - y_2 * x_1  <span class="hljs-comment"># Shape -&gt; (n lines, )</span>
+
+    <span class="hljs-comment"># Broadcast x_0, y_0 (n points, 1) and dx, dy, cross_term (1, n lines) -&gt; (n points, n lines)</span>
+    numerator = np.<span class="hljs-built_in">abs</span>(
+        dy[np.newaxis, :] * x_0[:, np.newaxis]
+        - dx[np.newaxis, :] * y_0[:, np.newaxis]
+        + cross_term[np.newaxis, :]
+    )
+    denominator = np.sqrt(dx**<span class="hljs-number">2</span> + dy**<span class="hljs-number">2</span>)  <span class="hljs-comment"># Shape -&gt; (n lines, )</span>
+
+    <span class="hljs-comment"># Shape (n points, n lines) / (1, n_lines) -&gt; (n points, n lines)</span>
+    <span class="hljs-keyword">return</span> numerator / denominator[np.newaxis, :]
+
+distance_points_to_lines(p, P0, P1)
+</code></pre>
+<h4 id="80-consider-an-arbitrary-array-write-a-function-that-extracts-a-subpart-with-a-fixed-shape-and-centered-on-a-given-element-pad-with-a-fill-value-when-necessary-">80. Consider an arbitrary array, write a function that extracts a subpart with a fixed shape and centered on a given element (pad with a <code>fill</code> value when necessary) (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Nicolas Rougier</span>
+
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))
+shape = (<span class="hljs-number">5</span>,<span class="hljs-number">5</span>)
+fill  = <span class="hljs-number">0</span>
+position = (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)
+
+R = np.ones(shape, dtype=Z.dtype)*fill
+P  = np.array(<span class="hljs-built_in">list</span>(position)).astype(<span class="hljs-built_in">int</span>)
+Rs = np.array(<span class="hljs-built_in">list</span>(R.shape)).astype(<span class="hljs-built_in">int</span>)
+Zs = np.array(<span class="hljs-built_in">list</span>(Z.shape)).astype(<span class="hljs-built_in">int</span>)
+
+R_start = np.zeros((<span class="hljs-built_in">len</span>(shape),)).astype(<span class="hljs-built_in">int</span>)
+R_stop  = np.array(<span class="hljs-built_in">list</span>(shape)).astype(<span class="hljs-built_in">int</span>)
+Z_start = (P-Rs//<span class="hljs-number">2</span>)
+Z_stop  = (P+Rs//<span class="hljs-number">2</span>)+Rs%<span class="hljs-number">2</span>
+
+R_start = (R_start - np.minimum(Z_start,<span class="hljs-number">0</span>)).tolist()
+Z_start = (np.maximum(Z_start,<span class="hljs-number">0</span>)).tolist()
+R_stop = np.maximum(R_start, (R_stop - np.maximum(Z_stop-Zs,<span class="hljs-number">0</span>))).tolist()
+Z_stop = (np.minimum(Z_stop,Zs)).tolist()
+
+r = <span class="hljs-built_in">tuple</span>([<span class="hljs-built_in">slice</span>(start,stop) <span class="hljs-keyword">for</span> start,stop <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(R_start,R_stop)])
+z = <span class="hljs-built_in">tuple</span>([<span class="hljs-built_in">slice</span>(start,stop) <span class="hljs-keyword">for</span> start,stop <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(Z_start,Z_stop)])
+R[r] = Z[z]
+<span class="hljs-built_in">print</span>(Z)
+<span class="hljs-built_in">print</span>(R)
+</code></pre>
+<h4 id="81-consider-an-array-z--1234567891011121314-how-to-generate-an-array-r--1234-2345-3456--11121314-">81. Consider an array Z = [1,2,3,4,5,6,7,8,9,10,11,12,13,14], how to generate an array R = [[1,2,3,4], [2,3,4,5], [3,4,5,6], ..., [11,12,13,14]]? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Stefan van der Walt</span>
+
+Z = np.arange(<span class="hljs-number">1</span>,<span class="hljs-number">15</span>,dtype=np.uint32)
+R = stride_tricks.as_strided(Z,(<span class="hljs-number">11</span>,<span class="hljs-number">4</span>),(<span class="hljs-number">4</span>,<span class="hljs-number">4</span>))
+<span class="hljs-built_in">print</span>(R)
+
+<span class="hljs-comment"># Author: Jeff Luo (@Jeff1999)</span>
+
+Z = np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">15</span>, dtype=np.uint32)
+<span class="hljs-built_in">print</span>(sliding_window_view(Z, window_shape=<span class="hljs-number">4</span>))
+</code></pre>
+<h4 id="82-compute-a-matrix-rank-">82. Compute a matrix rank (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Stefan van der Walt</span>
+
+Z = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))
+U, S, V = np.linalg.svd(Z) <span class="hljs-comment"># Singular Value Decomposition</span>
+threshold = <span class="hljs-built_in">len</span>(S) * S.<span class="hljs-built_in">max</span>() * np.finfo(S.dtype).eps
+rank = np.<span class="hljs-built_in">sum</span>(S &gt; threshold)
+<span class="hljs-built_in">print</span>(rank)
+
+<span class="hljs-comment"># alternative solution:</span>
+<span class="hljs-comment"># Author: Jeff Luo (@Jeff1999)</span>
+
+rank = np.linalg.matrix_rank(Z)
+<span class="hljs-built_in">print</span>(rank)
+</code></pre>
+<h4 id="83-how-to-find-the-most-frequent-value-in-an-array">83. How to find the most frequent value in an array?</h4>
+<pre><code class="language-python">Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">50</span>)
+<span class="hljs-built_in">print</span>(np.bincount(Z).argmax())
+</code></pre>
+<h4 id="84-extract-all-the-contiguous-3x3-blocks-from-a-random-10x10-matrix-">84. Extract all the contiguous 3x3 blocks from a random 10x10 matrix (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Chris Barker</span>
+
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))
+n = <span class="hljs-number">3</span>
+i = <span class="hljs-number">1</span> + (Z.shape[<span class="hljs-number">0</span>]-<span class="hljs-number">3</span>)
+j = <span class="hljs-number">1</span> + (Z.shape[<span class="hljs-number">1</span>]-<span class="hljs-number">3</span>)
+C = stride_tricks.as_strided(Z, shape=(i, j, n, n), strides=Z.strides + Z.strides)
+<span class="hljs-built_in">print</span>(C)
+
+<span class="hljs-comment"># Author: Jeff Luo (@Jeff1999)</span>
+
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">10</span>))
+<span class="hljs-built_in">print</span>(sliding_window_view(Z, window_shape=(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>)))
+</code></pre>
+<h4 id="85-create-a-2d-array-subclass-such-that-zij--zji-">85. Create a 2D array subclass such that Z[i,j] == Z[j,i] (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Eric O. Lebigot</span>
+<span class="hljs-comment"># Note: only works for 2d array and value setting using indices</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Symetric</span>(np.ndarray):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__setitem__</span>(<span class="hljs-params">self, index, value</span>):
+        i,j = index
+        <span class="hljs-built_in">super</span>(Symetric, self).__setitem__((i,j), value)
+        <span class="hljs-built_in">super</span>(Symetric, self).__setitem__((j,i), value)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">symetric</span>(<span class="hljs-params">Z</span>):
+    <span class="hljs-keyword">return</span> np.asarray(Z + Z.T - np.diag(Z.diagonal())).view(Symetric)
+
+S = symetric(np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>,(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>)))
+S[<span class="hljs-number">2</span>,<span class="hljs-number">3</span>] = <span class="hljs-number">42</span>
+<span class="hljs-built_in">print</span>(S)
+</code></pre>
+<h4 id="86-consider-a-set-of-p-matrices-with-shape-nn-and-a-set-of-p-vectors-with-shape-n1-how-to-compute-the-sum-of-of-the-p-matrix-products-at-once-result-has-shape-n1-">86. Consider a set of p matrices with shape (n,n) and a set of p vectors with shape (n,1). How to compute the sum of of the p matrix products at once? (result has shape (n,1)) (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Stefan van der Walt</span>
+
+p, n = <span class="hljs-number">10</span>, <span class="hljs-number">20</span>
+M = np.ones((p,n,n))
+V = np.ones((p,n,<span class="hljs-number">1</span>))
+S = np.tensordot(M, V, axes=[[<span class="hljs-number">0</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]])
+<span class="hljs-built_in">print</span>(S)
+
+<span class="hljs-comment"># It works, because:</span>
+<span class="hljs-comment"># M is (p,n,n)</span>
+<span class="hljs-comment"># V is (p,n,1)</span>
+<span class="hljs-comment"># Thus, summing over the paired axes 0 and 0 (of M and V independently),</span>
+<span class="hljs-comment"># and 2 and 1, to remain with a (n,1) vector.</span>
+</code></pre>
+<h4 id="87-consider-a-16x16-array-how-to-get-the-block-sum-block-size-is-4x4-">87. Consider a 16x16 array, how to get the block-sum (block size is 4x4)? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Robert Kern</span>
+
+Z = np.ones((<span class="hljs-number">16</span>,<span class="hljs-number">16</span>))
+k = <span class="hljs-number">4</span>
+S = np.add.reduceat(np.add.reduceat(Z, np.arange(<span class="hljs-number">0</span>, Z.shape[<span class="hljs-number">0</span>], k), axis=<span class="hljs-number">0</span>),
+                                       np.arange(<span class="hljs-number">0</span>, Z.shape[<span class="hljs-number">1</span>], k), axis=<span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(S)
+
+<span class="hljs-comment"># alternative solution:</span>
+<span class="hljs-comment"># Author: Sebastian Wallkötter (@FirefoxMetzger)</span>
+
+Z = np.ones((<span class="hljs-number">16</span>,<span class="hljs-number">16</span>))
+k = <span class="hljs-number">4</span>
+
+windows = np.lib.stride_tricks.sliding_window_view(Z, (k, k))
+S = windows[::k, ::k, ...].<span class="hljs-built_in">sum</span>(axis=(-<span class="hljs-number">2</span>, -<span class="hljs-number">1</span>))
+
+<span class="hljs-comment"># alternative solution (by @Gattocrucco)</span>
+S = Z.reshape(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>).<span class="hljs-built_in">sum</span>((<span class="hljs-number">1</span>, <span class="hljs-number">3</span>))
+</code></pre>
+<h4 id="88-how-to-implement-the-game-of-life-using-numpy-arrays-">88. How to implement the Game of Life using numpy arrays? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Nicolas Rougier</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">iterate</span>(<span class="hljs-params">Z</span>):
+    <span class="hljs-comment"># Count neighbours</span>
+    N = (Z[<span class="hljs-number">0</span>:-<span class="hljs-number">2</span>,<span class="hljs-number">0</span>:-<span class="hljs-number">2</span>] + Z[<span class="hljs-number">0</span>:-<span class="hljs-number">2</span>,<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>] + Z[<span class="hljs-number">0</span>:-<span class="hljs-number">2</span>,<span class="hljs-number">2</span>:] +
+         Z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>,<span class="hljs-number">0</span>:-<span class="hljs-number">2</span>]                + Z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>,<span class="hljs-number">2</span>:] +
+         Z[<span class="hljs-number">2</span>:  ,<span class="hljs-number">0</span>:-<span class="hljs-number">2</span>] + Z[<span class="hljs-number">2</span>:  ,<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>] + Z[<span class="hljs-number">2</span>:  ,<span class="hljs-number">2</span>:])
+
+    <span class="hljs-comment"># Apply rules</span>
+    birth = (N==<span class="hljs-number">3</span>) &amp; (Z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>]==<span class="hljs-number">0</span>)
+    survive = ((N==<span class="hljs-number">2</span>) | (N==<span class="hljs-number">3</span>)) &amp; (Z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>]==<span class="hljs-number">1</span>)
+    Z[...] = <span class="hljs-number">0</span>
+    Z[<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>:-<span class="hljs-number">1</span>][birth | survive] = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> Z
+
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,(<span class="hljs-number">50</span>,<span class="hljs-number">50</span>))
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>): Z = iterate(Z)
+<span class="hljs-built_in">print</span>(Z)
+</code></pre>
+<h4 id="89-how-to-get-the-n-largest-values-of-an-array-">89. How to get the n largest values of an array (★★★)</h4>
+<pre><code class="language-python">Z = np.arange(<span class="hljs-number">10000</span>)
+np.random.shuffle(Z)
+n = <span class="hljs-number">5</span>
+
+<span class="hljs-comment"># Slow</span>
+<span class="hljs-built_in">print</span> (Z[np.argsort(Z)[-n:]])
+
+<span class="hljs-comment"># Fast</span>
+<span class="hljs-built_in">print</span> (Z[np.argpartition(-Z,n)[:n]])
+</code></pre>
+<h4 id="90-given-an-arbitrary-number-of-vectors-build-the-cartesian-product-every-combination-of-every-item-">90. Given an arbitrary number of vectors, build the cartesian product (every combination of every item) (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Stefan Van der Walt</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">cartesian</span>(<span class="hljs-params">arrays</span>):
+    arrays = [np.asarray(a) <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> arrays]
+    shape = (<span class="hljs-built_in">len</span>(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> arrays)
+
+    ix = np.indices(shape, dtype=<span class="hljs-built_in">int</span>)
+    ix = ix.reshape(<span class="hljs-built_in">len</span>(arrays), -<span class="hljs-number">1</span>).T
+
+    <span class="hljs-keyword">for</span> n, arr <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(arrays):
+        ix[:, n] = arrays[n][ix[:, n]]
+
+    <span class="hljs-keyword">return</span> ix
+
+<span class="hljs-built_in">print</span> (cartesian(([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">7</span>])))
+</code></pre>
+<h4 id="91-how-to-create-a-record-array-from-a-regular-array-">91. How to create a record array from a regular array? (★★★)</h4>
+<pre><code class="language-python">Z = np.array([(<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-number">2.5</span>, <span class="hljs-number">3</span>),
+              (<span class="hljs-string">&quot;World&quot;</span>, <span class="hljs-number">3.6</span>, <span class="hljs-number">2</span>)])
+R = np.core.records.fromarrays(Z.T,
+                               names=<span class="hljs-string">&#x27;col1, col2, col3&#x27;</span>,
+                               formats = <span class="hljs-string">&#x27;S8, f8, i8&#x27;</span>)
+<span class="hljs-built_in">print</span>(R)
+</code></pre>
+<h4 id="92-consider-a-large-vector-z-compute-z-to-the-power-of-3-using-3-different-methods-">92. Consider a large vector Z, compute Z to the power of 3 using 3 different methods (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Ryan G.</span>
+
+x = np.random.rand(<span class="hljs-built_in">int</span>(<span class="hljs-number">5e7</span>))
+
+%timeit np.power(x,<span class="hljs-number">3</span>)
+%timeit x*x*x
+%timeit np.einsum(<span class="hljs-string">&#x27;i,i,i-&gt;i&#x27;</span>,x,x,x)
+</code></pre>
+<h4 id="93-consider-two-arrays-a-and-b-of-shape-83-and-22-how-to-find-rows-of-a-that-contain-elements-of-each-row-of-b-regardless-of-the-order-of-the-elements-in-b-">93. Consider two arrays A and B of shape (8,3) and (2,2). How to find rows of A that contain elements of each row of B regardless of the order of the elements in B? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Gabe Schwartz</span>
+
+A = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,(<span class="hljs-number">8</span>,<span class="hljs-number">3</span>))
+B = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>))
+
+C = (A[..., np.newaxis, np.newaxis] == B)
+rows = np.where(C.<span class="hljs-built_in">any</span>((<span class="hljs-number">3</span>,<span class="hljs-number">1</span>)).<span class="hljs-built_in">all</span>(<span class="hljs-number">1</span>))[<span class="hljs-number">0</span>]
+<span class="hljs-built_in">print</span>(rows)
+</code></pre>
+<h4 id="94-considering-a-10x3-matrix-extract-rows-with-unequal-values-eg-223-">94. Considering a 10x3 matrix, extract rows with unequal values (e.g. [2,2,3]) (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Robert Kern</span>
+
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,(<span class="hljs-number">10</span>,<span class="hljs-number">3</span>))
+<span class="hljs-built_in">print</span>(Z)
+<span class="hljs-comment"># solution for arrays of all dtypes (including string arrays and record arrays)</span>
+E = np.<span class="hljs-built_in">all</span>(Z[:,<span class="hljs-number">1</span>:] == Z[:,:-<span class="hljs-number">1</span>], axis=<span class="hljs-number">1</span>)
+U = Z[~E]
+<span class="hljs-built_in">print</span>(U)
+<span class="hljs-comment"># soluiton for numerical arrays only, will work for any number of columns in Z</span>
+U = Z[Z.<span class="hljs-built_in">max</span>(axis=<span class="hljs-number">1</span>) != Z.<span class="hljs-built_in">min</span>(axis=<span class="hljs-number">1</span>),:]
+<span class="hljs-built_in">print</span>(U)
+</code></pre>
+<h4 id="95-convert-a-vector-of-ints-into-a-matrix-binary-representation-">95. Convert a vector of ints into a matrix binary representation (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Warren Weckesser</span>
+
+I = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">15</span>, <span class="hljs-number">16</span>, <span class="hljs-number">32</span>, <span class="hljs-number">64</span>, <span class="hljs-number">128</span>])
+B = ((I.reshape(-<span class="hljs-number">1</span>,<span class="hljs-number">1</span>) &amp; (<span class="hljs-number">2</span>**np.arange(<span class="hljs-number">8</span>))) != <span class="hljs-number">0</span>).astype(<span class="hljs-built_in">int</span>)
+<span class="hljs-built_in">print</span>(B[:,::-<span class="hljs-number">1</span>])
+
+<span class="hljs-comment"># Author: Daniel T. McDonald</span>
+
+I = np.array([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">15</span>, <span class="hljs-number">16</span>, <span class="hljs-number">32</span>, <span class="hljs-number">64</span>, <span class="hljs-number">128</span>], dtype=np.uint8)
+<span class="hljs-built_in">print</span>(np.unpackbits(I[:, np.newaxis], axis=<span class="hljs-number">1</span>))
+</code></pre>
+<h4 id="96-given-a-two-dimensional-array-how-to-extract-unique-rows-">96. Given a two dimensional array, how to extract unique rows? (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Jaime Fernández del Río</span>
+
+Z = np.random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>,(<span class="hljs-number">6</span>,<span class="hljs-number">3</span>))
+T = np.ascontiguousarray(Z).view(np.dtype((np.void, Z.dtype.itemsize * Z.shape[<span class="hljs-number">1</span>])))
+_, idx = np.unique(T, return_index=<span class="hljs-literal">True</span>)
+uZ = Z[idx]
+<span class="hljs-built_in">print</span>(uZ)
+
+<span class="hljs-comment"># Author: Andreas Kouzelis</span>
+<span class="hljs-comment"># NumPy &gt;= 1.13</span>
+uZ = np.unique(Z, axis=<span class="hljs-number">0</span>)
+<span class="hljs-built_in">print</span>(uZ)
+</code></pre>
+<h4 id="97-considering-2-vectors-a--b-write-the-einsum-equivalent-of-inner-outer-sum-and-mul-function-">97. Considering 2 vectors A &amp; B, write the einsum equivalent of inner, outer, sum, and mul function (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Alex Riley</span>
+<span class="hljs-comment"># Make sure to read: http://ajcr.net/Basic-guide-to-einsum/</span>
+
+A = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+B = np.random.uniform(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">10</span>)
+
+np.einsum(<span class="hljs-string">&#x27;i-&gt;&#x27;</span>, A)       <span class="hljs-comment"># np.sum(A)</span>
+np.einsum(<span class="hljs-string">&#x27;i,i-&gt;i&#x27;</span>, A, B) <span class="hljs-comment"># A * B</span>
+np.einsum(<span class="hljs-string">&#x27;i,i&#x27;</span>, A, B)    <span class="hljs-comment"># np.inner(A, B)</span>
+np.einsum(<span class="hljs-string">&#x27;i,j-&gt;ij&#x27;</span>, A, B)    <span class="hljs-comment"># np.outer(A, B)</span>
+</code></pre>
+<h4 id="98-considering-a-path-described-by-two-vectors-xy-how-to-sample-it-using-equidistant-samples-">98. Considering a path described by two vectors (X,Y), how to sample it using equidistant samples (★★★)?</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Bas Swinckels</span>
+
+phi = np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>*np.pi, <span class="hljs-number">0.1</span>)
+a = <span class="hljs-number">1</span>
+x = a*phi*np.cos(phi)
+y = a*phi*np.sin(phi)
+
+dr = (np.diff(x)**<span class="hljs-number">2</span> + np.diff(y)**<span class="hljs-number">2</span>)**<span class="hljs-number">.5</span> <span class="hljs-comment"># segment lengths</span>
+r = np.zeros_like(x)
+r[<span class="hljs-number">1</span>:] = np.cumsum(dr)                <span class="hljs-comment"># integrate path</span>
+r_int = np.linspace(<span class="hljs-number">0</span>, r.<span class="hljs-built_in">max</span>(), <span class="hljs-number">200</span>) <span class="hljs-comment"># regular spaced path</span>
+x_int = np.interp(r_int, r, x)       <span class="hljs-comment"># integrate path</span>
+y_int = np.interp(r_int, r, y)
+</code></pre>
+<h4 id="99-given-an-integer-n-and-a-2d-array-x-select-from-x-the-rows-which-can-be-interpreted-as-draws-from-a-multinomial-distribution-with-n-degrees-ie-the-rows-which-only-contain-integers-and-which-sum-to-n-">99. Given an integer n and a 2D array X, select from X the rows which can be interpreted as draws from a multinomial distribution with n degrees, i.e., the rows which only contain integers and which sum to n. (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Evgeni Burovski</span>
+
+X = np.asarray([[<span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">8.0</span>],
+                [<span class="hljs-number">2.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>],
+                [<span class="hljs-number">1.5</span>, <span class="hljs-number">2.5</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0.0</span>]])
+n = <span class="hljs-number">4</span>
+M = np.logical_and.reduce(np.mod(X, <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>, axis=-<span class="hljs-number">1</span>)
+M &amp;= (X.<span class="hljs-built_in">sum</span>(axis=-<span class="hljs-number">1</span>) == n)
+<span class="hljs-built_in">print</span>(X[M])
+</code></pre>
+<h4 id="100-compute-bootstrapped-95-confidence-intervals-for-the-mean-of-a-1d-array-x-ie-resample-the-elements-of-an-array-with-replacement-n-times-compute-the-mean-of-each-sample-and-then-compute-percentiles-over-the-means-">100. Compute bootstrapped 95% confidence intervals for the mean of a 1D array X (i.e., resample the elements of an array with replacement N times, compute the mean of each sample, and then compute percentiles over the means). (★★★)</h4>
+<pre><code class="language-python"><span class="hljs-comment"># Author: Jessica B. Hamrick</span>
+
+X = np.random.randn(<span class="hljs-number">100</span>) <span class="hljs-comment"># random 1D array</span>
+N = <span class="hljs-number">1000</span> <span class="hljs-comment"># number of bootstrap samples</span>
+idx = np.random.randint(<span class="hljs-number">0</span>, X.size, (N, X.size))
+means = X[idx].mean(axis=<span class="hljs-number">1</span>)
+confint = np.percentile(means, [<span class="hljs-number">2.5</span>, <span class="hljs-number">97.5</span>])
+<span class="hljs-built_in">print</span>(confint)
+</code></pre>
+
+            
+            
+        </body>
+        </html>
